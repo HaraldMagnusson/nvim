@@ -7,10 +7,9 @@ vim.o.mouse = "a"
 
 vim.o.showmode = false
 
--- havent decided yet
--- vim.schedule(function()
--- 	vim.o.clipboard = "unnamedplus"
--- end)
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
 
 vim.o.breakindent = true
 vim.o.autoindent = true
