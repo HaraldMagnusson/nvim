@@ -3,6 +3,7 @@ require("lazy").setup({
 	require("plugins.gitsigns"),
 	require("plugins.which-key"),
 	require("plugins.telescope"),
+	require("plugins.lazydev"),
 	require("plugins.lspconfig"),
 	require("plugins.conform"),
 	require("plugins.blink"),
