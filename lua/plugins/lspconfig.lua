@@ -101,12 +101,19 @@ return {
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			on_attach = default_on_attach,
+			cmd = { "lua-language-server" },
 			filetypes = { "lua" },
 			settings = {
 				Lua = {
+					runtime = {
+						version = "Lua 5.4",
+					},
 					diagnostics = {
 						globals = { "vim" },
 						-- disable = { "missing-fields" },
+					},
+					hint = {
+						enable = true
 					},
 					-- completion = {
 					-- 	callSnippet = "Replace",
