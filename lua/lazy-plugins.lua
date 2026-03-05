@@ -11,7 +11,7 @@ require("lazy").setup({
 	require("plugins.todo-comments"),
 	require("plugins.mini"),
 	require("plugins.treesitter"),
-	require("plugins.tmux-navigation"),
+	require("plugins.smart-splits"),
 	require("plugins.autopairs"),
 	require("plugins.debug"),
 	require("plugins.indent-blankline"),
