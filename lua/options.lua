@@ -43,3 +43,6 @@ vim.o.cursorline = true
 vim.o.scrolloff = 16
 
 vim.o.confirm = true
+
+vim.o.linebreak = true
+vim.o.colorcolumn = "100"
