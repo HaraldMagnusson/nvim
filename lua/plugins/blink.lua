@@ -27,7 +27,10 @@ return {
 				--   end,
 				-- },
 			},
-			opts = {},
+			opts = {
+				-- https://github.com/nvim-lua/kickstart.nvim/issues/109
+				region_check_events = "InsertEnter",
+			},
 		},
 		"folke/lazydev.nvim",
 	},
