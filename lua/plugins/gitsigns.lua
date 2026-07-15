@@ -17,6 +17,18 @@ return {
 				vim.keymap.set(mode, l, r, opts)
 			end
 
+			local function diff_get(head)
+				-- linematch screws with diffget due to splitting up each diff into multiple diffs
+				-- https://github.com/neovim/neovim/pull/38329
+				vim.opt.diffopt:remove("linematch:40")
+				vim.cmd("diffget " .. head)
+				local mode = vim.fn.mode()
+				if mode == 'v' or mode == 'V' then
+					vim.api.nvim_input("<Esc>")
+				end
+				vim.opt.diffopt:append("linematch:40")
+			end
+
 			-- Navigation
 			map("n", "]c", function()
 				if vim.wo.diff then
@@ -51,9 +63,10 @@ return {
 			map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
 			map("n", "<leader>hb", gitsigns.blame_line, { desc = "git [b]lame line" })
 			map("n", "<leader>hd", gitsigns.diffthis, { desc = "git [d]iff against index" })
-			map("n", "<leader>hD", function()
-				gitsigns.diffthis("@")
-			end, { desc = "git [D]iff against last commit" })
+			map("n", "<leader>hD", function() gitsigns.diffthis("@") end, { desc = "git [D]iff against last commit" })
+			map({ "n", "v" }, "<leader>dl", function() diff_get("LOCAL") end, { desc = "diffget local" })
+			map({ "n", "v" }, "<leader>db", function() diff_get("BASE") end, { desc = "diffget base" })
+			map({ "n", "v" }, "<leader>dr", function() diff_get("REMOTE") end, { desc = "diffget remote" })
 			-- Toggles
 			map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle git show [b]lame line" })
 			map("n", "<leader>tD", gitsigns.preview_hunk_inline, { desc = "[T]oggle git show [D]eleted" })
