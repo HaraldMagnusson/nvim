@@ -87,10 +87,6 @@ return {
 		local default_on_attach = function(client, buffer)
 			set_lsp_keymap(client, buffer)
 			configure_hover_highlighting(client, buffer)
-
-			vim.o.foldmethod = "expr"
-			vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
-			vim.o.foldtext = ""
 		end
 
 		vim.lsp.config("*", {
